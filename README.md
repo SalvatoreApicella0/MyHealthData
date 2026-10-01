@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/myhealthdata-icon.png" alt="MyHealthData" width="128">
+<img src="public/brand-mark.png" alt="MyHealthData" width="128">
 
 # MyHealthData
 
