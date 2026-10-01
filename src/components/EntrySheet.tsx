@@ -33,7 +33,7 @@ export function EntrySheet({ title, onClose, children }: EntrySheetProps) {
     // Query inside the callback as well: the first render can contain only the
     // sheet shell while a specialist form is resolving.
     const focusFrame = window.requestAnimationFrame(() => {
-      const firstField = Array.from(panel.current?.querySelectorAll<HTMLElement>(
+      const firstField = Array.from(panel.current?.querySelector('.entry-sheet__body')?.querySelectorAll<HTMLElement>(
         'input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])',
       ) ?? []).find((element) => !element.closest('[hidden], [inert]'))
       const target = firstField ?? closeButton.current

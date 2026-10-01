@@ -39,6 +39,9 @@ it('corrects a measurement with retry while preserving provenance and timestamp 
     await act(async () => host.querySelector<HTMLButtonElement>('button[aria-label="Registrazioni: Peso"]')!.click())
     expect(host.textContent).toContain('120,123 lb')
     await act(async () => host.querySelector<HTMLButtonElement>('button[aria-label^="Modifica misura"]')!.click())
+    await act(async () => {
+      await new Promise<void>((resolve) => window.requestAnimationFrame(() => resolve()))
+    })
     expect(document.activeElement).toBe(host.querySelector('input'))
     await act(async () => {
       host.querySelector<HTMLButtonElement>('button[type="submit"]')!.focus()

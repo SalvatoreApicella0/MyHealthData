@@ -14,11 +14,16 @@ struct MHDMetricFavoriteButton: View {
                 .frame(width: 32, height: 32)
         }
         .buttonStyle(.plain)
-        .foregroundStyle(isFavorite ? Color.mhdWarm : .secondary)
+        .foregroundStyle(isFavorite ? Color.mhdWarm : Color.secondary)
         .mhdGlassCircle(tint: tint.opacity(0.10), interactive: true)
-        .accessibilityLabel(isFavorite ? "Rimuovi " + type.label + " dai preferiti" : "Aggiungi " + type.label + " ai preferiti")
+        .accessibilityLabel(favoriteLabel)
         .accessibilityHint("Usa lo stesso preferito anche nella versione Web.")
         .accessibilityAddTraits(isFavorite ? .isSelected : [])
+    }
+
+    private var favoriteLabel: String {
+        let action = isFavorite ? "Rimuovi" : "Aggiungi"
+        return "\(action) \(type.label) \(isFavorite ? "dai" : "ai") preferiti"
     }
 }
 
