@@ -5,7 +5,7 @@ describe('attachment integrity', () => {
   it('computes and verifies SHA-256 for a blob', async () => {
     const blob = new Blob(['referto'])
     const hash = await sha256Hex(blob)
-    expect(hash).toMatch(/^[0-9a-f]{64}$/)
+    expect(hash).toBe('77e3a4e767f28c1f890676faf551d3b6b7effc12bad44b7ce59d2e3319555182')
     expect(await attachmentMatchesHash(blob, hash)).toBe(true)
     expect(await attachmentMatchesHash(blob, '0'.repeat(64))).toBe(false)
   })

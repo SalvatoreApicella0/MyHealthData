@@ -17,7 +17,8 @@ export async function blobArrayBuffer(blob: Blob): Promise<ArrayBuffer> {
 export async function sha256Hex(blob: Blob): Promise<string | undefined> {
   if (!globalThis.crypto?.subtle) return undefined
   const bytes = await blobArrayBuffer(blob)
-  const digest = await globalThis.crypto.subtle.digest('SHA-256', bytes)
+  // Typed views also work with buffers created by FileReader in another realm.
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', new Uint8Array(bytes))
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('')
 }
 

@@ -18,6 +18,6 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./src/test/setup.ts'],
-    exclude: ['**/node_modules/**', '**/dist/**', '**/.worktrees/**', '**/worktrees/**', 'sync-server/**'],
+    exclude: ['**/node_modules/**', '**/dist/**', '**/.worktrees/**', '**/worktrees/**', '**/workspace-private/**', '**/repository-candidate/**', 'sync-server/**'],
   },
 })
