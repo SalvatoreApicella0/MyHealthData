@@ -1,0 +1,3 @@
+"CFBundleDisplayName" = "MyHealthData";
+"NSHealthShareUsageDescription" = "MyHealthData can import selected Apple Health records into your private local health journal when you choose to grant access.";
+"NSHealthUpdateUsageDescription" = "MyHealthData does not write health records to Apple Health in this version.";

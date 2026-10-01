@@ -1,0 +1,920 @@
+.spec {
+  display: grid;
+  gap: var(--space-4, 14px);
+}
+
+.spec[data-module='vision'] {
+  --spec-tint: #2f6fd0;
+  --spec-tint-soft: rgba(47, 111, 208, 0.12);
+}
+
+.spec[data-module='dental'] {
+  --spec-tint: #0e8f9c;
+  --spec-tint-soft: rgba(14, 143, 156, 0.12);
+}
+
+.spec[data-module='allergies'] {
+  --spec-tint: #d97706;
+  --spec-tint-soft: rgba(217, 119, 6, 0.12);
+}
+
+.spec[data-module='gut'] {
+  --spec-tint: #2f9e44;
+  --spec-tint-soft: rgba(47, 158, 68, 0.12);
+}
+
+.spec[data-module='sexual'] {
+  --spec-tint: #d6336c;
+  --spec-tint-soft: rgba(214, 51, 108, 0.12);
+}
+
+.spec-head {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.spec-head__actions {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.spec-caption {
+  align-items: center;
+  color: var(--text-muted);
+  display: inline-flex;
+  font-size: 12.5px;
+  gap: 6px;
+  margin: 0;
+}
+
+.spec-caption svg {
+  color: var(--spec-tint, var(--mhd-primary));
+}
+
+.spec-block {
+  display: grid;
+  gap: 8px;
+}
+
+.spec-title {
+  font-size: 14px;
+  margin: 0;
+}
+
+.spec-empty {
+  color: var(--text-faint);
+  font-size: 13px;
+  margin: 0;
+  padding: 2px 0;
+}
+
+/* Hero / eyes */
+
+.spec-hero {
+  background: linear-gradient(160deg, var(--spec-tint-soft, rgba(18, 110, 122, 0.1)), transparent 68%), var(--surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile, 14px);
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+}
+
+.spec-hero__head {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  justify-content: space-between;
+}
+
+.spec-hero__label {
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.spec-hero__kind {
+  color: var(--spec-tint, var(--mhd-primary));
+  font-size: 11.5px;
+  font-weight: 640;
+}
+
+.spec-eyes {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.spec-eye {
+  background: var(--surface-quiet, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--spec-tint, var(--mhd-primary)) 18%, transparent);
+  border-radius: var(--radius-tile, 14px);
+  display: grid;
+  gap: 3px;
+  justify-items: center;
+  padding: 10px 8px;
+}
+
+.spec-eye__name {
+  color: var(--spec-tint, var(--mhd-primary));
+  font-size: 11px;
+  font-weight: 720;
+  letter-spacing: 0.04em;
+}
+
+.spec-eye__value {
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 720;
+}
+
+.spec-eye__meta {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Chips */
+
+.spec-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.spec-chip {
+  align-items: center;
+  background: color-mix(in srgb, var(--spec-tint, var(--mhd-primary)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--spec-tint, var(--mhd-primary)) 22%, transparent);
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--spec-tint, var(--mhd-primary)) 82%, var(--text));
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 620;
+  gap: 4px;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+.spec-chip--quiet {
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  border-color: color-mix(in srgb, var(--text) 12%, transparent);
+  color: var(--text-muted);
+}
+
+.spec-chip--ok {
+  background: color-mix(in srgb, #2f9e44 12%, transparent);
+  border-color: color-mix(in srgb, #2f9e44 24%, transparent);
+  color: color-mix(in srgb, #2f9e44 86%, var(--text));
+}
+
+.spec-chip--danger,
+.spec-chip[data-severity='Anafilassi'],
+.spec-chip[data-severity='Grave'] {
+  background: color-mix(in srgb, #c92a2a 12%, transparent);
+  border-color: color-mix(in srgb, #c92a2a 26%, transparent);
+  color: color-mix(in srgb, #c92a2a 88%, var(--text));
+}
+
+.spec-chip[data-severity='Moderata'] {
+  background: color-mix(in srgb, #d97706 12%, transparent);
+  border-color: color-mix(in srgb, #d97706 26%, transparent);
+  color: color-mix(in srgb, #b45309 88%, var(--text));
+}
+
+.spec-chip[data-severity='Lieve'] {
+  background: color-mix(in srgb, #2f9e44 10%, transparent);
+  border-color: color-mix(in srgb, #2f9e44 20%, transparent);
+  color: color-mix(in srgb, #2f9e44 86%, var(--text));
+}
+
+/* Warning banner */
+
+.spec-warning {
+  align-items: center;
+  background: color-mix(in srgb, #c92a2a 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, #c92a2a 28%, transparent);
+  border-radius: var(--radius-tile, 14px);
+  color: color-mix(in srgb, #c92a2a 88%, var(--text));
+  display: flex;
+  font-size: 12.5px;
+  font-weight: 620;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 12px;
+}
+
+.spec-warning svg {
+  flex: 0 0 auto;
+}
+
+/* Lists */
+
+.spec-list {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.spec-row {
+  align-items: flex-start;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  display: flex;
+  gap: 10px;
+  padding: 9px 2px;
+}
+
+.spec-row:last-child {
+  border-bottom: 0;
+}
+
+.spec-row__icon {
+  align-items: center;
+  background: var(--spec-tint-soft, rgba(18, 110, 122, 0.12));
+  border-radius: 999px;
+  color: var(--spec-tint, var(--mhd-primary));
+  display: grid;
+  flex: 0 0 auto;
+  height: 26px;
+  place-items: center;
+  width: 26px;
+}
+
+.spec-row__icon[data-tone='danger'] {
+  background: color-mix(in srgb, #c92a2a 12%, transparent);
+  color: #c92a2a;
+}
+
+.spec-row__main {
+  display: grid;
+  flex: 1 1 auto;
+  gap: 3px;
+  min-width: 0;
+}
+
+.spec-row__titleline {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 10px;
+  justify-content: space-between;
+}
+
+.spec-row__title {
+  font-size: 13.5px;
+  font-weight: 640;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spec-row__date {
+  color: var(--text-faint);
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.spec-row__meta {
+  color: var(--text-muted);
+  font-size: 11.5px;
+}
+
+.spec-row__note {
+  color: var(--text-muted);
+  font-size: 11.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spec-row__delete {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--text-faint);
+  cursor: pointer;
+  display: grid;
+  flex: 0 0 auto;
+  height: 26px;
+  place-items: center;
+  width: 26px;
+}
+
+.spec-row__delete:hover {
+  background: color-mix(in srgb, #c92a2a 12%, transparent);
+  color: #c92a2a;
+}
+
+/* Odontogram */
+
+.spec-odontogram {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--spec-tint) 7%, var(--surface)), var(--surface));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile, 14px);
+  display: grid;
+  gap: 10px;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.spec-dental-summary {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.spec-dental-summary > div,
+.spec-dental-summary__filter {
+  align-items: baseline;
+  background: var(--surface-quiet);
+  border: 1px solid var(--border-glass);
+  border-radius: 999px;
+  display: inline-flex;
+  gap: 6px;
+  min-height: 32px;
+  padding: 5px 9px;
+}
+
+.spec-dental-summary__filter {
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.spec-dental-summary__filter:hover:not(:disabled),
+.spec-dental-summary__filter:focus-visible { border-color: var(--mhd-primary); }
+.spec-dental-summary__filter:disabled { cursor: default; opacity: .62; }
+
+.spec-dental-summary strong { font-size: 15px; font-variant-numeric: tabular-nums; }
+.spec-dental-summary span { color: var(--text-faint); font-size: 10.5px; }
+.spec-dental-summary [data-tone='caries'] strong { color: #d78314; }
+.spec-dental-summary [data-tone='treated'] strong { color: var(--mhd-primary); }
+.spec-dental-summary [data-tone='extraction'] strong { color: var(--text-muted); }
+
+.spec-odontogram__head {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  justify-content: space-between;
+}
+
+.spec-odontogram__mode {
+  color: var(--text-faint);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.spec-odontogram__legend {
+  align-items: center;
+  color: var(--text-faint);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 10.5px;
+  gap: 8px 14px;
+  justify-content: flex-end;
+}
+
+.spec-odontogram__legend span {
+  align-items: center;
+  display: inline-flex;
+  gap: 4px;
+}
+
+.spec-odontogram__legend i {
+  background: var(--spec-tint-soft);
+  border: 1px solid color-mix(in srgb, var(--spec-tint) 35%, transparent);
+  border-radius: 999px;
+  display: inline-block;
+  height: 7px;
+  width: 7px;
+}
+
+.spec-odontogram__legend i[data-tone='caries'] {
+  background: #2d7ff9;
+  border-color: #2d7ff9;
+}
+
+.spec-odontogram__legend i[data-tone='extraction'] {
+  background: #39414b;
+  border-color: #39414b;
+}
+
+.spec-dental-view-toggle {
+  background: var(--surface-quiet);
+  border: 1px solid var(--border-glass);
+  border-radius: 999px;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 4px;
+}
+
+.spec-dental-view-toggle .chip { flex: 1 1 0; justify-content: center; }
+
+.spec-dental-3d {
+  background: #f7f3ef;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile, 14px);
+  min-height: 230px;
+  overflow: hidden;
+  position: relative;
+}
+
+.spec-dental-3d-shell {
+  display: grid;
+  gap: 7px;
+}
+
+.spec-dental-3d__canvas {
+  min-height: 230px;
+}
+
+.spec-dental-3d canvas:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--spec-tint) 70%, #126e7a);
+  outline-offset: -3px;
+}
+
+.spec-dental-3d canvas {
+  touch-action: none;
+}
+
+.spec-dental-3d__availability {
+  background: rgb(255 255 255 / 0.82);
+  border: 1px solid rgb(126 103 86 / 0.16);
+  border-radius: 999px;
+  bottom: 9px;
+  color: var(--text-faint);
+  font-size: 10px;
+  left: 9px;
+  padding: 4px 8px;
+  position: absolute;
+}
+
+.spec-dental-3d__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: flex-end;
+}
+
+.spec-dental-3d__controls button {
+  background: var(--surface);
+  border: 1px solid var(--border-glass);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 10px;
+  padding: 5px 9px;
+}
+
+.spec-dental-3d__controls button:hover:not(:disabled),
+.spec-dental-3d__controls button:focus-visible {
+  border-color: var(--spec-tint);
+  color: var(--spec-tint);
+}
+
+.spec-dental-3d__controls button:disabled {
+  cursor: wait;
+  opacity: 0.45;
+}
+
+.spec-dental-3d__status {
+  color: var(--text-faint);
+  display: grid;
+  min-height: 230px;
+  place-items: center;
+  padding: 18px;
+  text-align: center;
+}
+
+.spec-odontogram__rows {
+  display: grid;
+  gap: 9px;
+}
+
+.spec-odontogram__row {
+  display: grid;
+  gap: 5px;
+}
+
+.spec-odontogram__row-label {
+  color: var(--text-faint);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.spec-odontogram__quadrants {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.spec-dental-quadrant {
+  background: color-mix(in srgb, var(--surface-quiet) 86%, transparent);
+  border: 1px solid var(--border-glass);
+  border-radius: 10px;
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 7px;
+}
+
+.spec-dental-quadrant__head {
+  align-items: baseline;
+  color: var(--text-faint);
+  display: flex;
+  font-size: 9px;
+  gap: 5px;
+  justify-content: space-between;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.spec-dental-quadrant__head strong {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.spec-dental-quadrant__grid {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.spec-tooth {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: grid;
+  gap: 1px;
+  min-height: 38px;
+  min-width: 0;
+  padding: 3px 2px;
+  position: relative;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.spec-tooth:hover {
+  border-color: color-mix(in srgb, var(--spec-tint) 55%, var(--border-glass));
+  transform: translateY(-1px);
+}
+
+.spec-tooth:focus-visible {
+  outline: 2px solid var(--spec-tint);
+  outline-offset: 2px;
+}
+
+.spec-tooth[aria-pressed='true'] {
+  border-color: var(--spec-tint);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--spec-tint) 18%, transparent);
+}
+
+.spec-tooth__marker {
+  color: var(--text-faint);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.spec-tooth__id {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.spec-tooth[data-tone='treated'] {
+  background: color-mix(in srgb, var(--spec-tint) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--spec-tint) 42%, var(--border-glass));
+}
+
+.spec-tooth[data-tone='treated'] .spec-tooth__marker { color: var(--spec-tint); }
+
+.spec-tooth[data-tone='caries'] {
+  background: color-mix(in srgb, #d78314 13%, var(--surface));
+  border-color: color-mix(in srgb, #d78314 52%, var(--border-glass));
+}
+
+.spec-tooth[data-tone='caries'] .spec-tooth__marker { color: #d78314; }
+
+.spec-tooth[data-tone='extraction'] {
+  background: color-mix(in srgb, #39414b 10%, var(--surface));
+  border-color: color-mix(in srgb, #39414b 40%, var(--border-glass));
+  color: var(--text-faint);
+}
+
+.spec-tooth[data-tone='extraction'] .spec-tooth__marker { color: var(--text-muted); }
+
+.spec-tooth-detail {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--spec-tint) 7%, var(--surface)), var(--surface));
+  border: 1px solid color-mix(in srgb, var(--spec-tint) 25%, var(--border-glass));
+  border-radius: var(--radius-tile, 14px);
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+}
+
+.spec-tooth-detail__head {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.spec-tooth-detail h4 {
+  font-size: 16px;
+  margin: 2px 0 0;
+}
+
+.spec-chip[data-tone='caries'] {
+  background: rgb(45 127 249 / 0.12);
+  border-color: rgb(45 127 249 / 0.3);
+  color: #215fab;
+}
+
+.spec-chip[data-tone='extraction'] {
+  background: rgb(57 65 75 / 0.12);
+  border-color: rgb(57 65 75 / 0.3);
+  color: #39414b;
+}
+
+.spec-tooth-detail__history {
+  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0 0;
+}
+
+.spec-tooth-detail__history li {
+  align-items: baseline;
+  display: flex;
+  font-size: 12px;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.spec-tooth-detail__history span {
+  color: var(--text-faint);
+  font-size: 11px;
+}
+
+.spec-tooth-detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+/* Stats */
+
+.spec-stats {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.spec-stat {
+  background: var(--surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile, 14px);
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+  padding: 10px 8px;
+}
+
+.spec-stat__value {
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 720;
+}
+
+.spec-stat__label {
+  color: var(--text-muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+/* Forms */
+
+.spec-form {
+  display: grid;
+  gap: 12px;
+}
+
+.spec-form label {
+  color: var(--text-muted);
+  display: grid;
+  font-size: 12px;
+  gap: 4px;
+}
+
+.spec-form input,
+.spec-form select,
+.spec-form textarea {
+  width: 100%;
+}
+
+.spec-form__grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.spec-form__eye {
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile, 14px);
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 10px;
+}
+
+.spec-form__eye legend {
+  color: var(--spec-tint, var(--mhd-primary));
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+.spec-form__note {
+  color: var(--text-muted);
+  font-size: 11.5px;
+  margin: 0;
+}
+
+.spec-form__error {
+  color: var(--danger, #b42318);
+  font-size: 12px;
+  margin: 0;
+}
+
+.spec-form__actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.spec-segmented {
+  background: var(--surface-sunken, rgba(15, 23, 31, 0.05));
+  border-radius: 999px;
+  display: grid;
+  gap: 3px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 3px;
+}
+
+.spec-segmented button {
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 620;
+  padding: 7px 10px;
+}
+
+.spec-segmented button[aria-pressed='true'] {
+  background: var(--surface-strong, #fff);
+  color: var(--spec-tint, var(--mhd-primary));
+  box-shadow: var(--shadow-1);
+}
+
+.spec-toggle {
+  align-items: center;
+  display: flex !important;
+  flex-direction: row;
+  gap: 8px !important;
+}
+
+.spec-toggle input {
+  width: auto;
+}
+
+/* Vision: latest prescription table */
+
+.spec-vision-table {
+  border-collapse: collapse;
+  font-size: 13px;
+  width: 100%;
+}
+
+.spec-vision-table th,
+.spec-vision-table td {
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  font-variant-numeric: tabular-nums;
+  padding: 7px 8px;
+  text-align: center;
+}
+
+.spec-vision-table thead th {
+  color: var(--spec-tint, var(--mhd-primary));
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.spec-vision-table tbody th {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.spec-vision-table tbody td {
+  font-size: 14.5px;
+  font-weight: 680;
+}
+
+.spec-vision-table tbody tr:last-child th,
+.spec-vision-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.spec-vision-summary {
+  display: grid;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.spec-vision-summary li {
+  color: var(--text);
+  font-size: 12.5px;
+}
+
+.spec-vision-note-actions {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.spec-dental-groups {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.spec-dental-group {
+  background: var(--surface-quiet, var(--surface));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile, 14px);
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+}
+
+.spec-dental-group__title {
+  color: var(--spec-tint, var(--mhd-primary));
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  .spec-dental-summary { gap: 4px; }
+  .spec-odontogram {
+    padding-inline: 6px;
+  }
+
+  .spec-dental-quadrant {
+    padding: 5px;
+  }
+
+  .spec-dental-quadrant__grid {
+    gap: 3px;
+  }
+
+  .spec-tooth__id {
+    font-size: 10px;
+  }
+}
+
+.spec-row__actions { align-items: center; display: flex; flex-wrap: wrap; gap: 4px; }
+.spec-row__delete { min-height: 44px; min-width: 44px; }
+.spec-row__actions .btn { min-height: 44px; min-width: 44px; }
+@media (max-width: 520px) { .spec-row__actions { flex-direction: column; } }
+
+.spec-prescription-history { border-bottom: 1px solid var(--border); padding: 8px 0; }
+.spec-prescription-history summary { cursor: pointer; min-height: 44px; padding: 10px 0; overflow-wrap: anywhere; }

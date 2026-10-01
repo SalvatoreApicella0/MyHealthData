@@ -1,0 +1,355 @@
+.gymx {
+  display: grid;
+  gap: var(--space-4, 14px);
+}
+
+.gymx-head {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.gymx-block {
+  display: grid;
+  gap: 8px;
+}
+
+.gymx-title {
+  font-size: 14px;
+  margin: 0;
+}
+
+.gymx-empty {
+  color: var(--text-faint);
+  font-size: 13px;
+  margin: 0;
+  padding: 2px 0;
+}
+
+.gymx-plans {
+  display: grid;
+  gap: 10px;
+}
+
+.gymx-plan {
+  background: linear-gradient(160deg, color-mix(in srgb, #f59e0b 10%, transparent), transparent 62%), var(--surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile, 14px);
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+}
+
+.gymx-plan__head {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  justify-content: space-between;
+}
+
+.gymx-plan__name {
+  font-size: 14.5px;
+  font-weight: 680;
+}
+
+.gymx-plan__last {
+  color: var(--text-faint);
+  font-size: 11.5px;
+}
+
+.gymx-days {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gymx-day {
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.gymx-day:first-child {
+  border-top: 0;
+}
+
+.gymx-day__name {
+  font-size: 13px;
+  font-weight: 580;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gymx-day__count {
+  color: var(--text-muted);
+  flex: 1 1 auto;
+  font-size: 11.5px;
+}
+
+.gymx-done {
+  align-items: center;
+  background: color-mix(in srgb, #f59e0b 14%, transparent);
+  border: 1px solid color-mix(in srgb, #f59e0b 28%, transparent);
+  border-radius: 999px;
+  color: color-mix(in srgb, #b45309 88%, var(--text));
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 11.5px;
+  font-weight: 640;
+  gap: 4px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.gymx-done:hover {
+  background: color-mix(in srgb, #f59e0b 24%, transparent);
+}
+
+.gymx-history {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gymx-workout {
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+
+.gymx-workout:last-child {
+  border-bottom: 0;
+}
+
+.gymx-workout__btn {
+  align-items: baseline;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 10px;
+  padding: 9px 4px;
+  text-align: left;
+  width: 100%;
+}
+
+.gymx-workout__btn:hover {
+  background: color-mix(in srgb, #f59e0b 8%, transparent);
+}
+
+.gymx-workout__date {
+  color: var(--text-muted);
+  flex: 0 0 auto;
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.gymx-workout__name {
+  font-size: 13px;
+  font-weight: 580;
+}
+
+.gymx-workout__meta {
+  color: var(--text-muted);
+  font-size: 11.5px;
+  margin-left: auto;
+  text-align: right;
+}
+
+.gymx-form {
+  display: grid;
+  gap: 12px;
+}
+
+.gymx-form__target {
+  background: color-mix(in srgb, var(--mhd-primary) 7%, var(--surface-quiet));
+  border: 1px solid color-mix(in srgb, var(--mhd-primary) 18%, var(--border));
+  border-radius: var(--radius-control);
+  color: var(--text);
+  line-height: 1.4;
+  padding: 10px 12px;
+}
+
+.gymx-form__target {
+  font-size: 15px;
+  font-weight: 640;
+  margin: 0;
+}
+
+.gymx-form label {
+  color: var(--text-muted);
+  display: grid;
+  font-size: 12px;
+  gap: 4px;
+}
+
+.gymx-form input,
+.gymx-form textarea {
+  width: 100%;
+}
+
+.gymx-form__grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gymx-form__error {
+  color: #b91c1c;
+  font-size: 12px;
+  margin: 0;
+}
+
+.gymx-form__actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.gymx-editor__days {
+  display: grid;
+  gap: 10px;
+}
+
+.gymx-editor__day {
+  background: var(--surface-quiet, var(--surface));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile, 14px);
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+}
+
+.gymx-editor__day::before {
+  color: var(--text-faint);
+  content: 'Giorno';
+  font-size: 10px;
+  font-weight: 760;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.gymx-editor__day-head {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.gymx-editor__day-head input {
+  flex: 1 1 auto;
+}
+
+.gymx-iconbtn {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: grid;
+  height: 26px;
+  place-items: center;
+  width: 26px;
+}
+
+.gymx-iconbtn:hover {
+  background: color-mix(in srgb, #f59e0b 14%, transparent);
+  color: color-mix(in srgb, #b45309 88%, var(--text));
+}
+
+.gymx-editor__exercise {
+  border-top: 1px dashed color-mix(in srgb, var(--border) 85%, transparent);
+  display: grid;
+  gap: 6px;
+  padding-top: 8px;
+}
+
+.gymx-editor__row {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gymx-editor__row--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gymx-editor__remove {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: color-mix(in srgb, #b91c1c 80%, var(--text-muted));
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 11.5px;
+  gap: 4px;
+  justify-self: start;
+  padding: 2px 0;
+}
+
+.gymx-editor__remove:hover {
+  color: #b91c1c;
+}
+
+.gymx-detail {
+  display: grid;
+  gap: 12px;
+}
+
+.gymx-detail__meta {
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  gap: 4px 12px;
+  margin: 0;
+}
+
+.gymx-detail__sets {
+  border-collapse: collapse;
+  font-size: 12.5px;
+  width: 100%;
+}
+
+.gymx-detail__sets th {
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 4px 6px;
+  text-align: left;
+}
+
+.gymx-detail__sets td {
+  border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  font-variant-numeric: tabular-nums;
+  padding: 5px 6px;
+}
+
+.gymx-detail__notes {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.gymx-detail__actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.gymx-delete {
+  color: #b91c1c;
+}

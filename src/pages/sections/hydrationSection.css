@@ -1,0 +1,281 @@
+.hydration {
+  display: grid;
+  gap: 10px;
+}
+
+.hydration-head {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.hydration-head__label {
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 620;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hydration-iconbtn {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  color: var(--text-faint);
+  display: inline-flex;
+  justify-content: center;
+  padding: 3px;
+}
+
+.hydration-iconbtn:hover {
+  background: var(--surface-quiet);
+  color: var(--text);
+}
+
+.hydration-rings {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.hydration-ring {
+  align-items: center;
+  display: grid;
+  gap: 1px;
+  justify-items: center;
+  min-width: 72px;
+}
+
+.hydration-ring svg {
+  display: block;
+}
+
+.hydration-ring__value {
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 680;
+  white-space: nowrap;
+}
+
+.hydration-ring__label {
+  color: var(--text-faint);
+  font-size: 10px;
+  text-align: center;
+}
+
+.hydration-hint {
+  color: var(--text-faint);
+  font-size: 11.5px;
+  margin: 0;
+}
+
+.hydration-note {
+  color: var(--text-faint);
+  font-size: 11.5px;
+  margin: 0;
+}
+
+.hydration-buttons {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.hydration-tile {
+  position: relative;
+}
+
+.hydration-log {
+  align-items: center;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--mhd-primary) 12%, transparent), transparent 66%), var(--surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile, 14px);
+  color: var(--text);
+  display: grid;
+  font: inherit;
+  gap: 2px 9px;
+  grid-template-areas: 'icon title' 'icon meta';
+  grid-template-columns: 34px minmax(0, 1fr);
+  justify-items: start;
+  padding: 10px 46px 10px 10px;
+  text-align: left;
+  transition: transform 0.16s var(--ease-spring), border-color 0.16s;
+  width: 100%;
+}
+
+.hydration-log:hover {
+  border-color: color-mix(in srgb, var(--mhd-primary) 36%, transparent);
+  transform: translateY(-1px);
+}
+
+.hydration-log__icon {
+  align-items: center;
+  background: color-mix(in srgb, var(--mhd-primary) 16%, transparent);
+  border-radius: 50%;
+  color: var(--mhd-primary-strong);
+  display: grid;
+  grid-area: icon;
+  height: 34px;
+  place-items: center;
+  width: 34px;
+}
+
+.hydration-log__icon[data-kind='caffeine'] {
+  background: color-mix(in srgb, #a05a2c 16%, transparent);
+  color: color-mix(in srgb, #a05a2c 86%, var(--text));
+}
+
+.hydration-log__icon[data-kind='alcohol'] {
+  background: color-mix(in srgb, #8a3ffc 16%, transparent);
+  color: color-mix(in srgb, #8a3ffc 84%, var(--text));
+}
+
+.hydration-log__title {
+  font-size: 14px;
+  font-weight: 700;
+  grid-area: title;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hydration-log__meta {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  grid-area: meta;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hydration-tile__controls {
+  display: grid;
+  gap: 2px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.hydration-tile__control {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--text-faint);
+  display: grid;
+  height: 24px;
+  place-items: center;
+  width: 24px;
+}
+
+.hydration-tile__control:hover {
+  background: color-mix(in srgb, var(--mhd-primary) 14%, transparent);
+  color: var(--mhd-primary);
+}
+
+.hydration-menu {
+  background: var(--surface-strong, var(--surface));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-control, 12px);
+  box-shadow: var(--shadow-3);
+  display: grid;
+  gap: 2px;
+  left: 50%;
+  min-width: 180px;
+  padding: 6px;
+  position: absolute;
+  top: calc(100% + 6px);
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.hydration-menu__item {
+  align-items: baseline;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  color: var(--text);
+  display: flex;
+  font: inherit;
+  font-size: 12.5px;
+  gap: 8px;
+  justify-content: space-between;
+  padding: 7px 9px;
+  text-align: left;
+}
+
+.hydration-menu__item:hover {
+  background: color-mix(in srgb, var(--mhd-primary) 12%, transparent);
+}
+
+.hydration-menu__item small {
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.hydration-menu__item:disabled,
+.hydration-log:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.hydration-menu__error,
+.hydration-tile__error {
+  color: var(--danger, #b42318);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  margin: 0.5rem 0 0;
+}
+
+.hydration-menu__error {
+  padding: 0 0.75rem 0.15rem;
+}
+
+.hydration-form {
+  display: grid;
+  gap: 12px;
+}
+
+.hydration-form__hint {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  margin: 0;
+}
+
+.hydration-form__options {
+  display: grid;
+  gap: 6px;
+}
+
+.hydration-form__option {
+  align-items: baseline;
+  background: var(--surface-quiet);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control, 12px);
+  display: flex;
+  gap: 8px;
+  padding: 9px 11px;
+}
+
+.hydration-form__option small {
+  color: var(--text-faint);
+  margin-left: auto;
+}
+
+.hydration-form__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 560px) {
+  .hydration-buttons {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,323 @@
+.labx {
+  display: grid;
+  gap: 10px;
+}
+
+.labx-head {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.labx-card {
+  border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  border-radius: 12px;
+  display: grid;
+  gap: 4px;
+  padding: 8px 11px;
+}
+
+.labx-card--missing {
+  border-style: dashed;
+  opacity: 0.78;
+}
+
+.labx-card-head {
+  align-items: baseline;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.labx-card-date {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 660;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.labx-card-count {
+  color: var(--text-faint);
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.labx-rows {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.labx-row {
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, var(--border) 52%, transparent);
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(92px, 1.5fr) minmax(84px, 1fr) minmax(70px, 0.9fr) 20px;
+  padding: 3px 0;
+}
+
+.labx-row:first-child {
+  border-top: 0;
+}
+
+.labx-row-name {
+  align-items: center;
+  color: var(--text);
+  display: inline-flex;
+  font-size: 12.5px;
+  font-weight: 560;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.labx-row--missing .labx-row-name {
+  color: var(--text-faint);
+  font-weight: 520;
+}
+
+.labx-row-trend {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.labx-row-trend[data-trend='up'] {
+  color: color-mix(in srgb, #e0902a 85%, var(--text));
+}
+
+.labx-row-trend[data-trend='down'] {
+  color: color-mix(in srgb, #3a9be0 85%, var(--text));
+}
+
+.labx-row-trend[data-trend='flat'] {
+  color: var(--text-faint);
+}
+
+.labx-row-flag {
+  background: color-mix(in srgb, #e0546e 16%, transparent);
+  border-radius: 999px;
+  color: color-mix(in srgb, #c22a42 90%, var(--text));
+  flex: 0 0 auto;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  padding: 0 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.labx-row-value {
+  color: var(--text);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 680;
+  white-space: nowrap;
+}
+
+.labx-row-value[data-level='ok'] {
+  color: color-mix(in srgb, #2fa36b 92%, var(--text));
+}
+
+.labx-row-value[data-level='warn'] {
+  color: color-mix(in srgb, #e0902a 92%, var(--text));
+}
+
+.labx-row-value[data-level='bad'] {
+  color: color-mix(in srgb, #d6364f 92%, var(--text));
+}
+
+.labx-row-value small {
+  color: var(--text-faint);
+  font-size: 10.5px;
+  font-weight: 600;
+  margin-left: 3px;
+}
+
+.labx-row-range {
+  color: var(--text-faint);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.labx-row-delete {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--text-faint);
+  display: grid;
+  height: 18px;
+  justify-self: end;
+  place-items: center;
+  width: 18px;
+}
+
+.labx-row-delete:hover {
+  background: color-mix(in srgb, #d6364f 14%, transparent);
+  color: color-mix(in srgb, #d6364f 88%, var(--text));
+}
+
+.labx-row-delete:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.labx-row-source {
+  align-self: center;
+  border: 1px solid color-mix(in srgb, var(--accent, #126e7a) 24%, transparent);
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--accent, #126e7a) 78%, var(--text));
+  font-size: 9px;
+  font-weight: 700;
+  justify-self: end;
+  letter-spacing: 0.04em;
+  padding: 3px 6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.labx-row-error {
+  color: var(--danger, #b42318);
+  font-size: 11px;
+  grid-column: 1 / -1;
+}
+
+.labx-more-row {
+  border-top: 1px solid color-mix(in srgb, var(--border) 52%, transparent);
+  display: flex;
+  justify-content: center;
+  padding: 4px 0 2px;
+}
+
+.labx-more {
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--mhd-primary);
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 640;
+  padding: 4px 12px;
+}
+
+.labx-more:hover {
+  background: color-mix(in srgb, var(--mhd-primary) 12%, transparent);
+}
+
+/* ------------------------------------------------------------ add sheet */
+
+.labx-add {
+  display: grid;
+  gap: 10px;
+}
+
+.labx-add-date {
+  color: var(--text-muted);
+  display: grid;
+  font-size: 12.5px;
+  font-weight: 640;
+  gap: 5px;
+}
+
+.labx-add-scroll {
+  border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  border-radius: 10px;
+  max-height: 46vh;
+  overflow: auto;
+}
+
+.labx-add-table {
+  border-collapse: collapse;
+  font-size: 12px;
+  width: 100%;
+}
+
+.labx-add-table th {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-faint);
+  font-size: 10.5px;
+  letter-spacing: 0.03em;
+  padding: 6px 8px;
+  position: sticky;
+  text-align: left;
+  text-transform: uppercase;
+  top: 0;
+  z-index: 1;
+}
+
+.labx-add-table td {
+  border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+  padding: 2px 8px;
+  vertical-align: middle;
+}
+
+.labx-add-table tr:first-child td {
+  border-top: 0;
+}
+
+.labx-add-label {
+  color: var(--text);
+  font-weight: 560;
+}
+
+.labx-add-unit,
+.labx-add-range {
+  color: var(--text-faint);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.labx-add-table input.labx-add-input {
+  min-height: 30px;
+  padding: 3px 8px;
+  text-align: right;
+}
+
+.labx-add-error {
+  color: color-mix(in srgb, #d6364f 92%, var(--text));
+  font-size: 12px;
+  margin: 0;
+}
+
+.labx-add-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 560px) {
+  .labx-row {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 20px;
+  }
+
+  .labx-row-range {
+    display: none;
+  }
+}
+
+.labx-row-edit { background: transparent; border: 0; cursor: pointer; min-height: 44px; padding: 4px 0; text-align: left; }
+.labx-row-edit svg { color: var(--text-muted); display: inline-block; margin-left: 4px; }
+.labx-row-delete { min-height: 44px; min-width: 20px; }
+@media (max-width: 520px) {
+  .labx-row-range { display: block; grid-column: 1 / -1; padding-bottom: 6px; }
+}
+@media (max-width: 520px) {
+  .labx-row { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 44px; }
+  .labx-row-delete, .labx-row-source { grid-column: 3; grid-row: 1; }
+  .labx-row-delete { min-width: 44px; }
+}

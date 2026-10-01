@@ -1,0 +1,328 @@
+.meds-section {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.meds-form__hint {
+  background: color-mix(in srgb, var(--mhd-primary) 7%, var(--surface-quiet));
+  border: 1px solid color-mix(in srgb, var(--mhd-primary) 18%, var(--border));
+  border-radius: var(--radius-control);
+  color: var(--text-muted);
+  font-size: 12.5px;
+  line-height: 1.45;
+  margin: 0;
+  padding: 10px 12px;
+}
+
+.meds-count--summary {
+  margin: 0;
+}
+
+.meds-summary-head {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.meds-count {
+  color: var(--text-faint);
+  font-size: 12.5px;
+}
+
+.meds-empty {
+  color: var(--text-faint);
+  font-size: 13px;
+  margin: 0;
+}
+
+.meds-next {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--mhd-primary) 12%, transparent), transparent 70%), var(--surface-quiet);
+  border: 1px solid color-mix(in srgb, var(--mhd-primary) 22%, var(--border-glass));
+  border-radius: var(--radius-tile);
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+}
+
+.meds-next__heading { align-items: baseline; display: flex; justify-content: space-between; }
+.meds-next__heading h3 { font-size: 14px; margin: 0; }
+.meds-next__heading span { color: var(--mhd-primary); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.meds-next__list { display: grid; gap: 5px; list-style: none; margin: 0; padding: 0; }
+.meds-next__list li { align-items: center; display: grid; gap: 9px; grid-template-columns: 48px minmax(0, 1fr) auto; }
+.meds-next__time { color: var(--mhd-primary-strong); font-size: 13px; font-variant-numeric: tabular-nums; font-weight: 750; }
+
+.meds-list {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.meds-item {
+  background: var(--surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile);
+  display: grid;
+  gap: 9px;
+  padding: 13px 14px;
+}
+
+.meds-item-head {
+  align-items: start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.meds-item-main {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.meds-name {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.meds-dose {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.meds-schedule {
+  color: #b36a12;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.meds-dose-action {
+  justify-self: start;
+  margin-top: 2px;
+}
+
+.meds-edit {
+  justify-self: start;
+}
+
+.meds-chips {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.meds-status,
+.meds-warn,
+.meds-flag,
+.meds-time {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 11.5px;
+  font-weight: 620;
+  gap: 4px;
+  line-height: 1;
+  padding: 5px 9px;
+  white-space: nowrap;
+}
+
+.meds-status--active {
+  background: color-mix(in srgb, #2ec794 16%, transparent);
+  color: #1c8a63;
+}
+
+.meds-status--paused {
+  background: color-mix(in srgb, #ff9500 16%, transparent);
+  color: #a9650c;
+}
+
+.meds-status--stopped {
+  background: color-mix(in srgb, var(--text) 12%, transparent);
+  color: var(--text-muted);
+}
+
+.meds-warn {
+  background: color-mix(in srgb, #ff3b30 14%, transparent);
+  color: #c0261d;
+}
+
+.meds-flag {
+  background: color-mix(in srgb, var(--mhd-primary) 14%, transparent);
+  color: var(--mhd-primary-strong);
+}
+
+.meds-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.meds-time {
+  background: var(--surface-quiet);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.meds-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.meds-meta-item {
+  color: var(--text-faint);
+  font-size: 12px;
+  min-width: 0;
+}
+
+.meds-meta-note {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meds-adherence {
+  background: var(--surface-quiet);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-tile);
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+}
+
+.meds-adherence-head {
+  align-items: baseline;
+  display: flex;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.meds-adherence-value {
+  color: #1c8a63;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.meds-bar {
+  background: color-mix(in srgb, var(--text) 12%, transparent);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.meds-bar-fill {
+  background: linear-gradient(90deg, #2ec794, var(--mhd-primary));
+  border-radius: 999px;
+  display: block;
+  height: 100%;
+}
+
+.meds-adherence-meta {
+  color: var(--text-faint);
+  font-size: 12px;
+}
+
+.meds-recent {
+  display: grid;
+  gap: 4px;
+}
+
+.meds-recent-title {
+  font-size: 14px;
+  margin: 4px 0 2px;
+}
+
+.meds-events {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.meds-event {
+  align-items: center;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  display: flex;
+  gap: 9px;
+  padding: 9px 2px;
+}
+
+.meds-event:last-child {
+  border-bottom: 0;
+}
+
+.meds-dot {
+  border-radius: 50%;
+  flex: 0 0 auto;
+  height: 8px;
+  width: 8px;
+}
+
+.meds-dot--taken {
+  background: #2ec794;
+}
+
+.meds-dot--skipped {
+  background: #ff3b30;
+}
+
+.meds-dot--postponed {
+  background: #ff9500;
+}
+
+.meds-event-name {
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 580;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meds-event-status {
+  font-size: 12px;
+  font-weight: 620;
+  flex: 0 0 auto;
+}
+
+.meds-event-status--taken {
+  color: #1c8a63;
+}
+
+.meds-event-status--skipped {
+  color: #c0261d;
+}
+
+.meds-event-status--postponed {
+  color: #a9650c;
+}
+
+.meds-event-time {
+  color: var(--text-faint);
+  flex: 0 0 auto;
+  font-size: 12px;
+  margin-left: auto;
+}
+
+@media (max-width: 560px) {
+  .meds-item-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .meds-chips {
+    justify-content: flex-start;
+  }
+}

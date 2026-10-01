@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: MyHealthData Hub API
+  version: 0.1.0
+paths:
+  /api/v1/status:
+    get:
+      responses: { '200': { description: Hub status } }
+  /api/v1/measurements:
+    get:
+      responses: { '200': { description: Current non-deleted measurements } }
+    post:
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [type, value, unit, measuredAt] } } } }
+      responses: { '201': { description: Created or revised measurement }, '400': { description: Invalid measurement } }
+  /api/v1/measurements/{id}:
+    delete:
+      parameters: [{ name: id, in: path, required: true, schema: { type: string } }, { name: baseRevision, in: query, schema: { type: integer } }]
+      responses: { '200': { description: Tombstoned }, '409': { description: Revision conflict } }
+  /api/v1/devices:
+    get:
+      responses: { '200': { description: Paired Hub and legacy relay devices } }
+  /api/v1/pairings:
+    post:
+      responses: { '201': { description: One-time, expiring pairing code } }
+  /api/v1/pairings/{id}/claim:
+    post:
+      parameters: [{ name: id, in: path, required: true, schema: { type: string } }]
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [pairingToken, name, publicKey] } } } }
+      responses: { '201': { description: Device credentials } }
+  /api/v1/sync/measurements:
+    get:
+      parameters: [{ name: since, in: query, schema: { type: integer } }, { name: limit, in: query, schema: { type: integer } }]
+      responses: { '200': { description: Incremental measurements and tombstones } }
+    post:
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [id, type, value, unit, measuredAt], properties: { baseRevision: { type: integer, description: Required for a device update of an existing record } } } } } }
+      responses: { '201': { description: Idempotent create or update }, '409': { description: Missing or stale device base revision } }
+  /api/v1/sync/measurements/{id}:
+    delete:
+      parameters: [{ name: id, in: path, required: true, schema: { type: string } }, { name: baseRevision, in: query, schema: { type: integer } }]
+      responses: { '200': { description: Idempotent tombstone }, '409': { description: Missing or stale device base revision } }
+  /api/v1/records/{domain}:
+    get:
+      parameters: [{ name: domain, in: path, required: true, schema: { type: string } }, { name: since, in: query, schema: { type: integer }, description: When present, returns the revision/tombstone change log instead of current state }]
+      responses: { '200': { description: Current non-deleted records, or incremental changes with tombstones when `since` is set } }
+    post:
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [id] } } } }
+      responses: { '201': { description: Created or revised canonical record }, '400': { description: Invalid domain, id or record } }
+  /api/v1/records/{domain}/{id}:
+    delete:
+      parameters: [{ name: domain, in: path, required: true, schema: { type: string } }, { name: id, in: path, required: true, schema: { type: string } }, { name: baseRevision, in: query, schema: { type: integer } }]
+      responses: { '200': { description: Tombstoned }, '409': { description: Revision conflict } }
+  /api/v1/sync/records/{domain}:
+    get:
+      parameters: [{ name: domain, in: path, required: true, schema: { type: string } }, { name: since, in: query, schema: { type: integer } }, { name: limit, in: query, schema: { type: integer } }]
+      responses: { '200': { description: Signed incremental canonical records and tombstones } }
+    post:
+      requestBody: { required: true, content: { application/json: { schema: { type: object, required: [id], properties: { baseRevision: { type: integer, description: Required for a device update of an existing record } } } } } }
+      responses: { '201': { description: Idempotent create or update }, '403': { description: Record owned by another device }, '409': { description: Missing or stale device base revision } }
+  /api/v1/sync/records/{domain}/{id}:
+    delete:
+      parameters: [{ name: domain, in: path, required: true, schema: { type: string } }, { name: id, in: path, required: true, schema: { type: string } }, { name: baseRevision, in: query, schema: { type: integer } }]
+      responses: { '200': { description: Idempotent tombstone }, '409': { description: Missing or stale device base revision } }
+  /api/v1/sync/attachments/{id}:
+    post:
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: X-MHD-Attachment-Name, in: header, schema: { type: string } }
+        - { name: X-MHD-Attachment-SHA256, in: header, schema: { type: string } }
+      requestBody: { required: true, content: { application/octet-stream: { schema: { type: string, format: binary } } } }
+      responses: { '201': { description: Stored attachment metadata }, '400': { description: Hash or identifier mismatch }, '413': { description: Attachment exceeds 16 MiB } }
+    get:
+      parameters: [{ name: id, in: path, required: true, schema: { type: string } }]
+      responses: { '200': { description: Signed binary attachment }, '404': { description: Attachment not found } }
+  /api/v1/attachments/{id}:
+    post:
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: X-MHD-Attachment-Name, in: header, schema: { type: string } }
+        - { name: X-MHD-Attachment-SHA256, in: header, schema: { type: string } }
+      requestBody: { required: true, content: { application/octet-stream: { schema: { type: string, format: binary } } } }
+      responses: { '201': { description: Stored attachment metadata }, '400': { description: Hash or identifier mismatch }, '413': { description: Attachment exceeds 16 MiB } }
+    get:
+      parameters: [{ name: id, in: path, required: true, schema: { type: string } }]
+      responses: { '200': { description: Binary attachment for the loopback Web UI }, '404': { description: Attachment not found } }

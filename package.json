@@ -1,0 +1,131 @@
+{
+  "name": "myhealthdata",
+  "private": false,
+  "version": "0.1.0",
+  "description": "Local-first, privacy-first personal health data web and iOS app.",
+  "author": "MyHealthData contributors",
+  "license": "MIT",
+  "type": "module",
+  "main": "apps/hub-desktop/main.mjs",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "build": "tsc -b && vite build",
+    "lint": "npm run typecheck",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "verify": "npm run oss:check && npm run typecheck && npm run test:run && npm run hub:test && npm run hub:mcp:test && npm run legacy:test && npm run build",
+    "oss:check": "node tools/check-repository-hygiene.mjs",
+    "hub": "node sync-server/hub.mjs",
+    "hub:mcp": "node sync-server/mcp.mjs",
+    "hub:mcp:test": "node --test sync-server/mcp.test.mjs",
+    "legacy:test": "node --test sync-server/legacy.test.mjs",
+    "hub:test": "node --test sync-server/hub.test.mjs sync-server/hub-primitives.test.mjs sync-server/hub-state.test.mjs",
+    "hub:desktop": "npm run build && electron .",
+    "hub:package:mac": "npm run build && electron-builder --mac",
+    "hub:package:win": "npm run build && electron-builder --win",
+    "hub:package:linux": "npm run build && electron-builder --linux",
+    "typecheck": "tsc -b --pretty false",
+    "ios:generate": "cd apps/ios/MyHealthDataiOS && xcodegen generate",
+    "ios:build:catalyst": "cd apps/ios/MyHealthDataiOS && xcodegen generate && xcodebuild -project MyHealthDataiOS.xcodeproj -scheme MyHealthDataiOS -configuration Debug -destination 'platform=macOS,variant=Mac Catalyst' CODE_SIGNING_ALLOWED=NO build",
+    "ios:build:tests:catalyst": "cd apps/ios/MyHealthDataiOS && xcodebuild -project MyHealthDataiOS.xcodeproj -scheme MyHealthDataiOS -configuration Debug -destination 'platform=macOS,variant=Mac Catalyst' CODE_SIGNING_ALLOWED=NO build-for-testing",
+    "ios:test:catalyst": "cd apps/ios/MyHealthDataiOS && xcodegen generate && xcodebuild test -project MyHealthDataiOS.xcodeproj -scheme MyHealthDataiOS -destination 'platform=macOS,variant=Mac Catalyst' -derivedDataPath build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO",
+    "ios:archive": "cd apps/ios/MyHealthDataiOS && xcodegen generate && xcodebuild -project MyHealthDataiOS.xcodeproj -scheme MyHealthDataiOS -configuration Release -destination 'generic/platform=iOS' -archivePath .derivedData/MyHealthDataiOS.xcarchive archive -allowProvisioningUpdates"
+  },
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.17.10",
+    "bonjour-service": "^1.4.4",
+    "clsx": "^2.1.1",
+    "dexie": "^4.0.11",
+    "lucide-react": "^0.468.0",
+    "pdfjs-dist": "^4.10.38",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.170.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.2",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/three": "^0.170.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "electron": "^36.0.0",
+    "electron-builder": "^24.13.3",
+    "fake-indexeddb": "^6.0.0",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.7.2",
+    "vite": "^6.4.3",
+    "vitest": "^3.2.6"
+  },
+  "build": {
+    "appId": "org.myhealthdata.hub",
+    "productName": "MyHealthData Hub",
+    "icon": "apps/hub-desktop/icon.icns",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "apps/hub-desktop/**",
+      "sync-server/hub.mjs",
+      "sync-server/hub-http.mjs",
+      "sync-server/hub-static.mjs",
+      "sync-server/hub-state.mjs",
+      "sync-server/hub-store.mjs",
+      "sync-server/hub-primitives.mjs",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "dist",
+        "to": "dist"
+      },
+      {
+        "from": "public/icon-512.png",
+        "to": "icon-512.png"
+      },
+      {
+        "from": "sync-server",
+        "to": "sync-server",
+        "filter": [
+          "hub.mjs",
+          "hub-http.mjs",
+          "hub-static.mjs",
+          "hub-state.mjs",
+          "hub-store.mjs",
+          "hub-primitives.mjs"
+        ]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.healthcare-fitness",
+      "extendInfo": {
+        "LSUIElement": true
+      },
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  },
+  "overrides": {
+    "fflate": "^0.8.3"
+  }
+}

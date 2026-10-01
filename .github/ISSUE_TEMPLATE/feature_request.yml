@@ -1,0 +1,14 @@
+name: Feature request
+description: Suggest an improvement to MyHealthData.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the workflow using examples without personal health data.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement

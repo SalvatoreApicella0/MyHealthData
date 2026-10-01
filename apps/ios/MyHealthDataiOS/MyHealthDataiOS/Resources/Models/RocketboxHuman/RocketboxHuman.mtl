@@ -1,0 +1,38 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v6.0.0)
+
+newmtl f001_body
+Kd 0 0 0
+Ka 0 0 0
+Ks 0.899999976 0.899999976 0.899999976
+Ke 0 0 0
+Tf 0 0 0
+d 1
+Ns 2
+illum 2
+map_Kd f001_body_color.jpg
+bump f001_body_normal.jpg
+map_bump f001_body_normal.jpg
+
+newmtl f001_head
+Kd 0 0 0
+Ka 0 0 0
+Ks 0.899999976 0.899999976 0.899999976
+Ke 0 0 0
+Tf 0 0 0
+d 1
+Ns 2
+illum 2
+map_Kd f001_head_color.jpg
+bump f001_head_normal.jpg
+map_bump f001_head_normal.jpg
+
+newmtl f001_opacity
+Kd 0 0 0
+Ka 0 0 0
+Ks 0.899999976 0.899999976 0.899999976
+Ke 0 0 0
+Tf 0 0 0
+d 1
+Ns 2
+illum 2

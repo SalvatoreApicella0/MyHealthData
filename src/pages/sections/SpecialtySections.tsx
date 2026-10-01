@@ -1,0 +1,5 @@
+export { AllergiesSection } from './AllergiesSection'
+export { DentalSection, dentalSummaryCounts } from './DentalSection'
+export { GutSection } from './GutSection'
+export { SexualSection } from './SexualSection'
+export { VisionSection } from './VisionSection'

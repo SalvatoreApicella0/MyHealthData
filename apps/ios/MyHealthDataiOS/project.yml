@@ -1,0 +1,91 @@
+name: MyHealthDataiOS
+options:
+  bundleIdPrefix: org.myhealthdata
+  deploymentTarget:
+    iOS: "18.0"
+settings:
+  base:
+    DEVELOPMENT_TEAM: ""
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "81"
+    SWIFT_VERSION: "6.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+    SUPPORTED_PLATFORMS: "iphoneos iphonesimulator"
+    ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+targets:
+  MyHealthDataiOS:
+    type: application
+    platform: iOS
+    supportedDestinations:
+      - iOS
+      - macOS
+    sources:
+      - path: MyHealthDataiOS
+        excludes:
+          - Resources/GymDataset/images
+          - Resources/GymDataset/videos
+    resources:
+      - MyHealthDataiOS/Resources/PrivacyInfo.xcprivacy
+      - path: MyHealthDataiOS/Resources/BodyParts3D
+        type: folder
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.myhealthdata.ios
+        CODE_SIGN_STYLE: Automatic
+        SUPPORTED_PLATFORMS: "iphoneos iphonesimulator macosx"
+        SUPPORTS_MACCATALYST: YES
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: MyHealthDataiOS/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: MyHealthDataiOS/Resources/MyHealthDataiOS.entitlements
+        ENABLE_USER_SCRIPT_SANDBOXING: YES
+    entitlements:
+      path: MyHealthDataiOS/Resources/MyHealthDataiOS.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.background-delivery: true
+        com.apple.security.network.client: true
+        com.apple.security.application-groups:
+          - group.org.myhealthdata.shared
+    dependencies:
+      - target: MyHealthDataShare
+        embed: true
+        platformFilter: iOS
+    scheme:
+      testTargets:
+        - MyHealthDataiOSTests
+  MyHealthDataiOSTests:
+    type: bundle.unit-test
+    platform: iOS
+    supportedDestinations:
+      - iOS
+      - macOS
+    sources:
+      - MyHealthDataiOSTests
+    dependencies:
+      - target: MyHealthDataiOS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.myhealthdata.ios.tests
+        SUPPORTED_PLATFORMS: "iphoneos iphonesimulator macosx"
+        SUPPORTS_MACCATALYST: YES
+        GENERATE_INFOPLIST_FILE: YES
+  MyHealthDataShare:
+    type: app-extension
+    platform: iOS
+    sources:
+      - MyHealthDataShare
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.myhealthdata.ios.share
+        PRODUCT_NAME: MyHealthDataShare
+        CODE_SIGN_STYLE: Automatic
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: MyHealthDataShare/Info.plist
+        CODE_SIGN_ENTITLEMENTS: MyHealthDataShare/MyHealthDataShare.entitlements
+        SKIP_INSTALL: YES
+    entitlements:
+      path: MyHealthDataShare/MyHealthDataShare.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.org.myhealthdata.shared

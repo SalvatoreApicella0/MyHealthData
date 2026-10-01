@@ -1,0 +1,134 @@
+.entry-sheet {
+  align-items: flex-start;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: color-mix(in srgb, #042026 48%, transparent);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 10vh 16px 16px;
+  position: fixed;
+  overscroll-behavior: contain;
+  touch-action: none;
+  z-index: 130;
+}
+
+.entry-sheet__panel {
+  animation: entry-sheet-in 0.22s var(--ease-spring) both;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 94%, var(--mhd-primary) 6%), var(--surface));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-3);
+  max-height: min(86vh, 860px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  touch-action: auto;
+  width: min(720px, 100%);
+}
+
+.entry-sheet__panel:focus-visible {
+  outline: 2px solid var(--mhd-primary);
+  outline-offset: 3px;
+}
+
+.entry-sheet__head {
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 18px;
+}
+
+.entry-sheet__head h2 {
+  font-size: 17px;
+}
+
+.entry-sheet__close {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--text-muted);
+  display: grid;
+  height: 30px;
+  place-items: center;
+  width: 30px;
+}
+
+.entry-sheet__close:hover {
+  background: color-mix(in srgb, var(--mhd-primary) 12%, transparent);
+  color: var(--mhd-primary);
+}
+
+.entry-sheet__body {
+  padding: 20px 22px 22px;
+}
+
+.entry-sheet__body .form-grid {
+  gap: 16px;
+}
+
+.entry-sheet__body input:not([type='checkbox']):not([type='radio']),
+.entry-sheet__body select,
+.entry-sheet__body textarea {
+  background: color-mix(in srgb, var(--surface-strong) 88%, var(--mhd-primary) 12%);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 9%, transparent);
+}
+
+.entry-sheet__body input[type='file'] {
+  cursor: pointer;
+  padding: 7px 10px;
+}
+
+.entry-sheet__body .form-actions {
+  border-top: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  justify-content: flex-end;
+  margin-top: 4px;
+  padding-top: 14px;
+}
+
+@media (max-width: 640px) {
+  .entry-sheet {
+    align-items: flex-end;
+    padding: 7vh 8px max(8px, env(safe-area-inset-bottom, 0px));
+  }
+
+  .entry-sheet__panel {
+    border-radius: 24px;
+    max-height: 88vh;
+    max-height: min(88vh, 860px);
+  }
+
+  .entry-sheet__head,
+  .entry-sheet__body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .entry-sheet__body .form-actions {
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    bottom: -22px;
+    margin: 0 -16px -22px;
+    padding: 14px 16px max(14px, env(safe-area-inset-bottom, 0px));
+    position: sticky;
+    z-index: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-sheet__panel {
+    animation: none;
+  }
+}
+
+@keyframes entry-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

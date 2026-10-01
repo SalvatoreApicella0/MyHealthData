@@ -1,0 +1,26 @@
+/* Vision module: prescription-focused layout. Scoped under `.vision-`. */
+
+.vision-latest {
+  gap: 14px;
+}
+
+.vision-latest__date {
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 720;
+  letter-spacing: -0.02em;
+}
+
+.vision-latest__text {
+  color: var(--text);
+  font-size: 14.5px;
+  line-height: 1.5;
+  margin: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.vision-value {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}

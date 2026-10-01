@@ -1,0 +1,20 @@
+name: Bug report
+description: Report a reproducible problem using synthetic data.
+body:
+  - type: markdown
+    attributes:
+      value: "Use synthetic data only. Do not include medical records, vault exports, credentials or personal screenshots. Report security vulnerabilities privately through the Security tab."
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: What happened and how can we reproduce it?
+      description: Include steps, expected behavior and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: App component, commit/version, OS and browser or device.
+    validations:
+      required: true

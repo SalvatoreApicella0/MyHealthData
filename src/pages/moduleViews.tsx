@@ -1,0 +1,8 @@
+export { BackupModuleView } from './BackupModuleView'
+export { CANONICAL_CONFIGS, CanonicalDomainView } from './CanonicalDomainView'
+export type { CanonicalDomainConfig } from './CanonicalDomainView'
+export { EventModuleView } from './EventModuleView'
+export { MeasurementModuleView } from './MeasurementModuleView'
+export { ShareModuleView } from './ShareModuleView'
+export { tintStyle } from './moduleViewSupport'
+export { TrendsModuleView } from './TrendsModuleView'

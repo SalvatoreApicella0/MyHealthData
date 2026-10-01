@@ -1,0 +1,30 @@
+services:
+  hub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      # LAN exposure is opt-in; default is loopback only.
+      - "127.0.0.1:8472:8472"
+    environment:
+      MHD_HUB_STORE_KEY: ${MHD_HUB_STORE_KEY:?set a random base64 256-bit MHD_HUB_STORE_KEY before starting hub}
+    volumes:
+      - myhealthdata-hub:/data
+    restart: unless-stopped
+
+  # Retained while existing SelfHostedSyncClient backup users migrate to Hub mode.
+  sync:
+    build:
+      context: ./sync-server
+      dockerfile: legacy.Dockerfile
+    ports:
+      - "127.0.0.1:8090:8090"
+    environment:
+      MHD_SYNC_TOKEN: ${MHD_SYNC_TOKEN:?set MHD_SYNC_TOKEN before starting sync}
+    volumes:
+      - myhealthdata-sync:/data
+    restart: unless-stopped
+
+volumes:
+  myhealthdata-hub:
+  myhealthdata-sync:
