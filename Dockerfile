@@ -1,4 +1,4 @@
-FROM node:20.12.2-alpine AS deps
+FROM node:26.10.0-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
@@ -7,7 +7,7 @@ FROM deps AS build
 COPY . .
 RUN npm run build
 
-FROM node:20.12.2-alpine AS runtime
+FROM node:26.10.0-alpine AS runtime
 WORKDIR /app
 COPY --from=build /app/dist ./dist
 COPY sync-server/hub.mjs sync-server/hub-http.mjs sync-server/hub-static.mjs sync-server/hub-state.mjs sync-server/hub-store.mjs sync-server/hub-primitives.mjs ./sync-server/
