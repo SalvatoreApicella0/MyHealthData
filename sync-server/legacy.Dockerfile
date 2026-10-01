@@ -1,4 +1,4 @@
-FROM node:22-alpine
+FROM node:26-alpine
 WORKDIR /app
 COPY server.mjs legacy-http.mjs legacy-store.mjs .
 ENV PORT=8090 MHD_SYNC_DATA=/data
